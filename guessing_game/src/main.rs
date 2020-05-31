@@ -26,7 +26,10 @@ fn main() {
         // we use shadowing to redefine the guess variable
         // also we need to specify the u32 type annotation in order to indicate to
         // the compiler, that we are parsing to u32
-        let guess: u32 = guess.trim().parse().expect("Please input your guess:");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
 
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
