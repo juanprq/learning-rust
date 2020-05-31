@@ -22,6 +22,9 @@ fn main() {
         .expect("Failed to read line");
 
     // we parse the guess to u32
+    // we use shadowing to redefine the guess variable
+    // also we need to specify the u32 type annotation in order to indicate to
+    // the compiler, that we are parsing to u32
     let guess: u32 = guess.trim().parse().expect("Please type a number");
     println!("You guessed: {}", guess);
 
